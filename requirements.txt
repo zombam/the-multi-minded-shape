@@ -1,0 +1,8 @@
+torch
+numpy
+scikit-image
+scikit-learn
+Pillow
+trimesh
+plotly
+streamlit
