@@ -6,8 +6,7 @@ import numpy as np
 import trimesh
 from skimage import measure
 from scipy.ndimage import binary_closing
-sys.path.append(os.path.abspath('../src'))
-from autoencoder_model import Decoder  # Your trained model
+from src.autoencoder_model import Decoder  # Your trained model
 import plotly.graph_objects as go
 
 # Setup
@@ -15,18 +14,18 @@ device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 # Load decoder
 decoder = Decoder()
-decoder.load_state_dict(torch.load("../checkpoints/decoder.pth", map_location=device))
+decoder.load_state_dict(torch.load("checkpoints/decoder.pth", map_location=device))
 decoder.to(device)
 decoder.eval()
 
 # Load latent vectors
 latents = {
-    "grid": torch.load("../latents/grid.pt"),
-    "flowing": torch.load("../latents/flowing.pt"),
-    "holes": torch.load("../latents/holes.pt"),
-    "complex": torch.load("../latents/complex.pt"),
-    "lines": torch.load("../latents/lines.pt"),
-    "point": torch.load("../latents/point.pt"),
+    "grid": torch.load("latents/grid.pt"),
+    "flowing": torch.load("latents/flowing.pt"),
+    "holes": torch.load("latents/holes.pt"),
+    "complex": torch.load("latents/complex.pt"),
+    "lines": torch.load("latents/lines.pt"),
+    "point": torch.load("latents/point.pt"),
 }
 
 # Streamlit sliders
